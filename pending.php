@@ -6,46 +6,57 @@ if(isset($_GET['status'])){
 		$id = $_GET['id'];
 		$sql = "UPDATE `user_master` SET `Type` = '$type' WHERE `user_id` = $id";
 		$stmt= $pdo->query($sql);
-		$_SESSION['msg']= "Succesfully Accepted Requests";
+		$_SESSION['msg55']= "Succesfully Accepted Requests";
 	}
 	else if($_GET['status']=='reject'){
 		$type='3';
 		$id = $_GET['id'];
 		$sql = "UPDATE `user_master` SET `Type` = '$type' WHERE `user_master`.`user_id` = $id";
 		$stmt= $pdo->query($sql);
-		$_SESSION['msg']= "Succesfully Rejected Requests";
+		$_SESSION['msg55']= "Succesfully Rejected Requests";
 	}
 	else{
 		$_SESSION['error'] = "Something Gets Wrong";
 	}
 	header('Location: pending.php');
+	return;
 }
 ?>
 <?php require 'header.php'?>
 <body>
 <?php require 'navbar.php' ?>
 
-<?php if(isset($_SESSION['username'])){ ?>
-<div class="col-sm-9">
+<?php if(isset($_SESSION['username'])){ 
+
+ ?>
+<div class="col-md-9">
+<span id="cls2"  class="text-primary" onclick="openNav()">&#9776; </span>
       <h1>Admin Portal</h1>
 	  <hr>
 	<h3>Pending Mode</h3>
 <?php
-	if(isset($_SESSION['msg'])){
-		echo "<p class='text-success'>".$_SESSION['msg']."</p>";
+	if(isset($_SESSION['msg55'])){
+		//echo $_SESSION['msg55'];
+		if($_SESSION['msg55']!=""){
+			echo "<div class='alert alert-success alert-dismissible'>".$_SESSION['msg55'];
+			echo '<button type="button" class="close" data-dismiss="alert">&times;</button></div>';	
+			$_SESSION['msg55']= "";
+		}
 	}
 	if(isset($_SESSION['error'])){
-		echo "<p class='text-danger'>".$_SESSION['error']."</p>";
+		echo "<div class='alert alert-danger alert-dismissible'>".$_SESSION['error'];
+		echo '<button type="button" class="close" data-dismiss="alert">&times;</button></div>';
+		
 	}
 	$sql = "SELECT user_master.user_id,user_master.name,user_master.roll,user_master.email,user_master.phone,branch.branch_name,semester.semester_name FROM user_master INNER JOIN semester JOIN branch ON user_master.Branch_id = branch.branch_id AND user_master.Sem_id = semester.semester_id WHERE user_master.Type='2'";
 	$stmt = $pdo->query($sql);
 	if($stmt->rowCount()>0){
-	echo "<table class='table table-responsive'>";
+	echo "<table class='table'>";
 			echo "<tr class='bg-info'>";
 				echo "<th>Name</th>";
 				echo "<th>Roll</th>";
-				echo "<th>email</th>";
-				echo "<th>phone</th>";
+				echo "<th class='hidden-xs'>email</th>";
+				echo "<th class='hide1'>phone</th>";
 				echo "<th>Branch</th>";
 				echo "<th>Semester</th>";
 				echo "<th>Action</th>";
@@ -54,8 +65,8 @@ if(isset($_GET['status'])){
 		echo "<tr>";
 			echo "<td>".$row['name']."</td>";
 			echo "<td>".$row['roll']."</td>";
-			echo "<td>".$row['email']."</td>";
-			echo "<td>".$row['phone']."</td>";
+			echo "<td class='hidden-xs'>".$row['email']."</td>";
+			echo "<td class='hide1'>".$row['phone']."</td>";
 			echo "<td>".$row['branch_name']."</td>";
 			echo "<td>".$row['semester_name']."</td>";
 			echo '<td>

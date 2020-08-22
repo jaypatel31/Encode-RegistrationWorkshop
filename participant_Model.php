@@ -3,11 +3,12 @@
 	function addParticipant($name,$lastname,$pass,$email,$phone,$roll,$bh_id,$sem_id,$img){
 		global $pdo;
 		$type=2;
-		$sql= "INSERT INTO user_master (roll,name,user_password,email,phone,Branch_id,Sem_id,Type,Image) VALUES (:roll, :name, :upass, :email, :phone, :branch, :sem, :tp, :img)";
+		$sql= "INSERT INTO user_master (roll,name,lname,user_password,email,phone,Branch_id,Sem_id,Type,Image) VALUES (:roll, :name, :lname, :upass, :email, :phone, :branch, :sem, :tp, :img)";
 		$stmt = $pdo->prepare($sql);
 		$stmt->execute(array(
 			':roll' => $roll,
-			':name' => $name,
+			':name' => ucfirst($name),
+			':lname' => ucfirst($lastname),
 			':upass' => $pass,
 			':email' => $email,
 			':phone' => $phone,

@@ -6,7 +6,9 @@ require_once('pdo.php');
 <?php require 'navbar.php' ?>
 
 <?php if(isset($_SESSION['username'])){ ?>
-<div class="col-sm-9">
+<div class="col-md-9">
+<span id="cls2"  class="text-primary" onclick="openNav()">&#9776; </span>
+
       <h1>Admin Portal</h1>
 	  <hr>
 	<h3>Accepted Mode</h3>
@@ -14,12 +16,12 @@ require_once('pdo.php');
 	$sql = "SELECT user_master.name,user_master.roll,user_master.email,user_master.phone,branch.branch_name,semester.semester_name FROM user_master INNER JOIN semester JOIN branch ON user_master.Branch_id = branch.branch_id AND user_master.Sem_id = semester.semester_id WHERE user_master.Type='1'";
 	$stmt = $pdo->query($sql);
 	if($stmt->rowCount()>0){
-	echo "<table class='table table-responsive'>";
+	echo "<table class='table'>";
 			echo "<tr class='bg-info'>";
 				echo "<th>Name</th>";
 				echo "<th>Roll</th>";
-				echo "<th>email</th>";
-				echo "<th>phone</th>";
+				echo "<th class='hidden-xs'>email</th>";
+				echo "<th class='hide1'>phone</th>";
 				echo "<th>Branch</th>";
 				echo "<th>Semester</th>";
 				echo "<th>Action</th>";
@@ -28,8 +30,8 @@ require_once('pdo.php');
 		echo "<tr>";
 			echo "<td>".$row['name']."</td>";
 			echo "<td>".$row['roll']."</td>";
-			echo "<td>".$row['email']."</td>";
-			echo "<td>".$row['phone']."</td>";
+			echo "<td class='hidden-xs'>".$row['email']."</td>";
+			echo "<td class='hide1'>".$row['phone']."</td>";
 			echo "<td>".$row['branch_name']."</td>";
 			echo "<td>".$row['semester_name']."</td>";
 			echo '<td class="text-success">Accepted</td>';

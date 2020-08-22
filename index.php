@@ -22,6 +22,7 @@ else{
 <?php require('navbar.php')?>
 
     <div class="col-sm-9">
+	<span id="cls2"  class="text-primary" onclick="openNav()">&#9776; </span>
       <h1>Admin Portal</h1>
 	  <hr>
 		<p>Welcome to the admin portal</p>

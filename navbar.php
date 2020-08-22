@@ -1,7 +1,8 @@
 <div class="container-fluid">
   <div class="row content">
-    <div class="col-sm-3 sidenav">
-      <h4>Admin Portal</h4>
+    <div id="mySidenav" class="col-md-3 sidenav">
+	 <a id="cls1" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <h4 >Admin Portal</h4>
 	 <?php
 		$home_class = $view_class = $add_class = $update_class ="";
 		$basename = basename($_SERVER['SCRIPT_NAME']);
@@ -23,7 +24,7 @@
 			$acc ="Pending";
 		}
 	  ?>
-      <ul class="nav nav-pills nav-stacked">
+      <ul id="nav" class="nav nav-pills nav-stacked nav">
         <li <?php echo $home_class ?>><a href="index.php">Home</a></li>
         <li <?php echo $view_class ?>><a href="view.php">View</a></li>
         <li <?php echo $add_class ?>><a href="accepted.php">Accepted</a></li>
@@ -31,3 +32,5 @@
 		<li ><a href="logout.php">Logout</a></li>
       </ul><br>
     </div>
+	
+	

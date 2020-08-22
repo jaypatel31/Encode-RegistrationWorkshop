@@ -17,7 +17,7 @@
 			if($type==0){
 				header('Location: index.php');
 			}
-			else if($type==1 || $type==2){
+			else if($type==1 || $type==2 || $type==3){
 				header('Location: participant.php');
 			}
 		}
@@ -111,6 +111,11 @@ body {
 	position:absolute;
 	top:2%;
 	right:5%;
+}
+@media only screen and (max-width:400px){
+	.login-form {
+		width: 300px;
+	}
 }
 </style>
 </head>
