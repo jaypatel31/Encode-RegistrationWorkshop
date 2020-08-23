@@ -9,27 +9,46 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <script>
 	function openNav() {
 	  document.getElementById("mySidenav").style.width = "250px";
 	   document.getElementById("mySidenav").style.left = "0px";
 	  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+	  document.getElementById("pagin").style.opacity = "0.4";
 	}
 
 	function closeNav() {
 	  document.getElementById("mySidenav").style.width = "0";
 	  document.getElementById("mySidenav").style.left = "-50px";
 	  document.body.style.backgroundColor = "white";
+	  document.getElementById("pagin").style.opacity = "1";
 	}
-</script>
+	</script>
   <style>
-    .row.content {height: 700px}
+	  html{
+		  overflow-x:hidden;
+	  }
+		#se:focus{
+			outline:none;
+		}
+		#se{
+			border-radius:7px;
+			font-size:14px;
+			vertical-align:middle;
+			padding:6px;
+			font-family: FontAwesome;
+		}
+    .row.content {height: 800px}
     /* Set gray background color and 100% height */
     .sidenav {
       background-color: #f1f1f1;
       height: 100%;
     }
+	.mb-5{
+		margin-bottom:5px;
+	}
 	#cls1{
 		visibility:hidden;
 		
@@ -54,6 +73,11 @@
 	}
 	.bold{
 		font-weight:bold;
+	}
+	hr{
+		clear:both;
+		border-width:4px;
+		border-radius:10px;
 	}
 	#pop{
 		border:1px solid green;
@@ -82,6 +106,9 @@
 		  display:;
 		  float:none;
 	  }
+	  .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+			padding:8px 3px;
+		}
 	  #nav li{
 		  display:block;
 	  }
@@ -90,10 +117,13 @@
 		.hide1{
 			display:none;
 		}
+		#se{
+			padding:1px;
+		}
 	}
 	@media screen and (max-width:439px){
 		.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-			padding:8px 5px;
+			padding:8px 3px;
 		}
 		.btn{
 			padding:1px 6px;
@@ -109,9 +139,7 @@
 			float:left;
 			margin-top:5px;
 		}
-		hr{
-			clear:both;
-		}
+		
 		#cls2{
 			display:block;
 		}

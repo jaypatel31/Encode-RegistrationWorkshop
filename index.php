@@ -1,8 +1,9 @@
 <?php
 session_start();
-require 'pdo.php';
+require('Common/Const.php');
+require 'Common/'.PDO;
 if(empty($_SESSION['username'])){
-	header('Location: login.php');
+	header('Location: View/'.LOGIN);
 }
 else{
 	$sql = "SELECT * From user_master WHERE Type='1'";
@@ -16,10 +17,10 @@ else{
 	$pending = $stmt2->rowCount();
 ?>
 <html>
-<?php require('header.php')?>
+<?php require('Common/'.HEAD)?>
 <body>
 
-<?php require('navbar.php')?>
+<?php require('Common/'.NAVBAR)?>
 
     <div class="col-sm-9">
 	<span id="cls2"  class="text-primary" onclick="openNav()">&#9776; </span>

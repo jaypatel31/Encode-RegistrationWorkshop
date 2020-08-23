@@ -1,15 +1,16 @@
 <?php 
 session_start();
-require('pdo.php');
+require('../Common/Const.php');
+require('../Common/'.PDO);
 ?>
- <?php require('header.php'); ?>
+ <?php require('../Common/'.HEAD); ?>
   <style>
 	
 		.card {
 		  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 		  transition: 0.3s;
 		  float:left;
-		  width: 25%;
+		  width: 20%;
 		}
 
 		.card:hover {
@@ -19,14 +20,19 @@ require('pdo.php');
 		.card_container {
 		  padding: 2px 16px;
 		}
-		
+		@media screen and (max-width:439px){
+			.card{
+				width:30%;
+			}
+		}
 		
 	</style>
 </head>
 <body>
 
-<?php require("participant_navbar.php") ?>
+	<?php require("../Common/".P_NAVBAR) ?>
     <div class="col-sm-8 text-left"> 
+	<span id="cls2"  class="text-primary" onclick="openNav()">&#9776; </span>
       <div id="heading1">Your Profile</div>
       <hr>
 		<?php
@@ -45,6 +51,7 @@ require('pdo.php');
 			else if($row['Type']==3){
 				$msg= "<p class='text-danger'><span class='bold'>Status : </span>Rejected</p>";
 			}
+			echo "<div>";
 			echo '<div class="card">
 					<img src="'.$row['image'].'" alt="Avatar" style="width:100%">
 						<div class="card_container">
@@ -54,7 +61,7 @@ require('pdo.php');
 					</div>';
 			}
 			else{
-				header('Location: index.php');
+				header('Location: ../index.php');
 			}
 ?>
 			<div class="lead" style="float:left;margin-left:20px;width:50%;">
@@ -65,12 +72,13 @@ require('pdo.php');
 				echo "<p><span class='bold'>Branch : </span>".$row['branch_name']."<br/></p>";
 				echo "<p><span class='bold'>Semester : </span>".$row['semester_name']."<br/></p>";
 				echo $msg;
+				echo "</div>";
 			?>
 			</div>
 		<?php
 			if($row['Type']==1){
 					ob_start();
-					require('../fpdf/fpdf.php');
+					require('../../fpdf/fpdf.php');
 					$pdf = new FPDF('L','mm',array(250,150));
 					$pdf->AddPage();
 					$pdf->SetFont('Courier','B',40);
@@ -90,13 +98,13 @@ require('pdo.php');
 					$pdf->SetDrawColor(5,150,0);
 					$pdf->SetFillColor(100,150,0);
 					$pdf->image($row['image'],205,55,40);
-					$pdf->image('image/logo.png',85,3,70,20);
-					$pdf->Output('F','save/'.$row['roll'].'.pdf');
+					$pdf->image('../image/logo.png',85,3,70,20);
+					$pdf->Output('F','../save/'.$row['roll'].'.pdf');
 					ob_end_flush();
 		?>
 
 		<?php
-				  require ('../vendor5/autoload.php');
+				  require ('../../vendor5/autoload.php');
 				$barcode = new \Com\Tecnick\Barcode\Barcode();
 				$examples = '<h3>Linear</h3>'."\n";
 				$type='C128C';
@@ -115,6 +123,9 @@ require('pdo.php');
 				</html>
 				";  
 					
+			}
+			else if($row['Type']==3){
+				echo "<p style='clear:both;font-size:20px' class='lead text-danger'>Try Next Time:)</p>";
 			}
 		?>
   </div>

@@ -1,6 +1,7 @@
 <?php
 	session_start();
-	require_once('pdo.php');
+	require('../Common/Const.php');
+	require_once('../Common/'.PDO);
 
 	if(isset($_POST['submit'])){
 		$sql = "SELECT * FROM user_master WHERE roll = :user AND user_password = :pass";
@@ -15,14 +16,14 @@
 			$_SESSION['username'] = $rows['roll'];
 			$type =$rows['Type'];
 			if($type==0){
-				header('Location: index.php');
+				header('Location: ../index.php');
 			}
 			else if($type==1 || $type==2 || $type==3){
-				header('Location: participant.php');
+				header('Location: '.PARTICIPANT);
 			}
 		}
 		else{
-			header('Location: login.php?error=INVALID CREDENTIALS');
+			header('Location: '.LOGIN.'?error=INVALID CREDENTIALS');
 			return;
 		}
 	}
@@ -120,10 +121,10 @@ body {
 </style>
 </head>
 <body>
-<img class="img-bg" src="image/background.jpg"> </img>
+<img class="img-bg" src="../image/background.jpg"> </img>
 <div class="login-form">
     <form method="post">
-	<img id="sm-logo" src="image/login_logo.jpg">
+	<img id="sm-logo" src="../image/login_logo.jpg">
 	<?php
 		if(isset($_GET['error'])){
 			echo "<p style='color:red'>".$_GET['error']."</p>";

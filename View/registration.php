@@ -1,6 +1,7 @@
 <?php
 session_start();
-require 'pdo.php';
+require('../Common/Const.php');
+require '../Common/'.PDO;
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,12 +13,12 @@ require 'pdo.php';
    <script src="https://kit.fontawesome.com/e55efccdcb.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-   <link rel="stylesheet" href="css/main.css">
+   <link rel="stylesheet" href="../css/main.css">
 </head>
 <!--HEADING-->
 <body class="bg-light">
 <div class="jumbotron text-center text-white bg-primary">
-<img id="logo" class="pb-1" src="image/logo.jpg" alt="LOGO">
+<img id="logo" class="pb-1" src="../image/logo.jpg" alt="LOGO">
 <h2 id="heading">Registration Form</h2>
 <i onclick="change(event)" class="fas fa-moon fa-2x icon1" id="two"></i>
   	<i onclick="change(event)" class="fas fa-sun fa-2x icon1" ></i>
@@ -32,7 +33,7 @@ if(isset($_SESSION['error'])){
 		$_SESSION['error']="";
 }
 ?>
-<form action="Controller.php" method="post" enctype="multipart/form-data">
+<form action="../Controller/Controller.php" method="post" enctype="multipart/form-data">
   <label for="fname">First name : </label>
   <input type="text" id="fname" name="fname" required placeholder="Magnus"><br><br>
   <label for="lname">Last name : </label>
@@ -81,5 +82,5 @@ if(isset($_SESSION['error'])){
 </div>
 <!--MAIN BODY ENDS-->
 </body>
-<script src="js/main.js"></script>
+<script src="../js/main.js"></script>
 </html>

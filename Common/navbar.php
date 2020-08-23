@@ -8,12 +8,27 @@
 		$basename = basename($_SERVER['SCRIPT_NAME']);
 		if($basename == "index.php"){
 			$home_class = 'class="active"';
+			
 		}else if($basename == "view.php"){
 			$view_class = 'class="active"';
 		}else if($basename == "accepted.php"){
 			$add_class = 'class="active"';
 		}else if($basename == "pending.php"){
 			$update_class = 'class="active"';
+		}
+		if($basename == "index.php"){
+			$href1 = 'index.php';
+			$href2 = 'View/view.php';
+			$href3 = 'View/accepted.php';
+			$href4 = 'View/pending.php';
+			$href5 = 'View/logout.php';
+		}
+		else{
+			$href1 = '../index.php';
+			$href2 = 'view.php';
+			$href3 = 'accepted.php';
+			$href4 = 'pending.php';
+			$href5 = 'logout.php';
 		}
 		$sql9 = "SELECT * FROM user_master WHERE Type='2'";
 		$stmt9 = $pdo->query($sql9);
@@ -25,11 +40,11 @@
 		}
 	  ?>
       <ul id="nav" class="nav nav-pills nav-stacked nav">
-        <li <?php echo $home_class ?>><a href="index.php">Home</a></li>
-        <li <?php echo $view_class ?>><a href="view.php">View</a></li>
-        <li <?php echo $add_class ?>><a href="accepted.php">Accepted</a></li>
-        <li <?php echo $update_class ?>><a href="pending.php"><?php echo $acc; ?></a></li>
-		<li ><a href="logout.php">Logout</a></li>
+        <li <?php echo $home_class ?>><a href="<?php echo $href1 ?>">Home</a></li>
+        <li <?php echo $view_class ?>><a href="<?php echo $href2 ?>">View</a></li>
+        <li <?php echo $add_class ?>><a href="<?php echo $href3 ?>">Accepted</a></li>
+        <li <?php echo $update_class ?>><a href="<?php echo $href4 ?>"><?php echo $acc; ?></a></li>
+		<li ><a href="<?php echo $href5 ?>">Logout</a></li>
       </ul><br>
     </div>
 	
