@@ -2,7 +2,6 @@
 	session_start();
 	require('../Common/Const.php');
 	require_once('../Common/'.PDO);
-
 	if(isset($_POST['submit'])){
 		$sql = "SELECT * FROM user_master WHERE roll = :user AND user_password = :pass";
 		$stmt = $pdo->prepare($sql);
@@ -27,18 +26,28 @@
 			return;
 		}
 	}
+	if(isset($_GET['mode'])){
+		if($_GET['mode']=='dark'){
+			$_SESSION['mode'] = 'dark';
+		}
+		else{
+			$_SESSION['mode'] = 'light';
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Bootstrap Simple Login Form with Blue Background</title>
+<title>Encode-Registration</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+   <script src="https://kit.fontawesome.com/e55efccdcb.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../css/main.css">
 <style>
 body {
 	color: #fff;
@@ -65,7 +74,6 @@ body {
 	border-radius: 2px;
 }
 .login-form {
-	
 	width: 350px;
 	margin: 30px auto;
 	text-align: center;
@@ -118,13 +126,39 @@ body {
 		width: 300px;
 	}
 }
+.icon1{
+	top:2%;
+	bottom:auto;
+}
+<?php 
+	if(isset($_SESSION['mode'])){
+		if($_SESSION['mode']=='dark'){
+		?>
+#one{
+	display:none;
+}
+
+#form1{
+	background-color:#343a40;
+	color:white;
+}
+<?php		
+		}
+	}
+?>	
 </style>
+
 </head>
 <body>
-<img class="img-bg" src="../image/background.jpg"> </img>
+<img class="img-bg" id="img-bg" src="../image/background.jpg"> </img>
 <div class="login-form">
-    <form method="post">
-	<img id="sm-logo" src="../image/login_logo.jpg">
+	
+    <form method="post" id="form1" >
+	<a href="login.php?mode=light">
+	<i class="fas fa-moon fa-2x icon1" id="two"></i></a>
+	<a href="login.php?mode=dark">
+  	<i class="fas fa-sun fa-2x icon1" id="one"></i></a>
+	<img id="sm-logo" src="../image/login_logo.jpg" title="Encode" alt="Logo">
 	<?php
 		if(isset($_GET['error'])){
 			echo "<p style='color:red'>".$_GET['error']."</p>";

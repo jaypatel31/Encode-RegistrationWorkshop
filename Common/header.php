@@ -16,6 +16,13 @@
 	  document.getElementById("mySidenav").style.width = "250px";
 	   document.getElementById("mySidenav").style.left = "0px";
 	  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+		<?php if(isset($_SESSION['mode'])){
+				if($_SESSION['mode']=='dark'){
+		?>
+		document.body.style.backgroundColor = "rgba(52,68,64,0.5)";
+		<?php }
+			}		
+		?>
 	  document.getElementById("pagin").style.opacity = "0.4";
 	}
 
@@ -23,13 +30,20 @@
 	  document.getElementById("mySidenav").style.width = "0";
 	  document.getElementById("mySidenav").style.left = "-50px";
 	  document.body.style.backgroundColor = "white";
+		<?php if(isset($_SESSION['mode'])){
+				if($_SESSION['mode']=='dark'){
+		?>
+		document.body.style.backgroundColor = "#343a40";
+		<?php }
+			}		
+		?>
 	  document.getElementById("pagin").style.opacity = "1";
 	}
 	</script>
   <style>
-	  html{
+		html{
 		  overflow-x:hidden;
-	  }
+		}
 		#se:focus{
 			outline:none;
 		}
@@ -40,148 +54,193 @@
 			padding:6px;
 			font-family: FontAwesome;
 		}
-    .row.content {height: 800px}
-    /* Set gray background color and 100% height */
-    .sidenav {
-      background-color: #f1f1f1;
-      height: 100%;
-    }
-	.mb-5{
-		margin-bottom:5px;
-	}
-	#cls1{
-		visibility:hidden;
-		
-	}
-	#cls2{
-		display:none;
-		font-size:30px;
-		cursor:pointer;
-		float:right;
-		margin-top:5px;
-	}
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-	#heading1{
-		font-size:32px;
-		font-weight:bold;
-		padding-top:3px;
-	}
-	.bold{
-		font-weight:bold;
-	}
-	hr{
-		clear:both;
-		border-width:4px;
-		border-radius:10px;
-	}
-	#pop{
-		border:1px solid green;
-		border-radius:50%;
-		padding:2px 4px;
-		background-color:red;
-		color:white;
-		margin-left:3px;
-	}
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 991px) {
-      .sidenav {
-        height: auto;
-      }
-	  .sidenav h4{
-		  display:inline-block;
-		  float:right;
-	  }
-	  #nav li{
-		  display:inline-block;
-	  }
-      .row.content {height: auto;} 
-    }
-	@media screen and (max-width:700px){
-		 .sidenav h4{
-		  display:;
-		  float:none;
-	  }
-	  .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-			padding:8px 3px;
+		.row.content {height: 800px}
+		/* Set gray background color and 100% height */
+		.sidenav {
+		  background-color: #f1f1f1;
+		  height: 100%;
 		}
-	  #nav li{
-		  display:block;
-	  }
-	}
-	@media screen and (max-width:567px){
-		.hide1{
-			display:none;
-		}
-		#se{
-			padding:1px;
-		}
-	}
-	@media screen and (max-width:439px){
-		.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-			padding:8px 3px;
-		}
-		.btn{
-			padding:1px 6px;
-		}
-		body{
-			font-size:13px;
+		.mb-5{
+			margin-bottom:5px;
 		}
 		#cls1{
-			visibility:visible;
+			visibility:hidden;
 			
 		}
-		h1{
-			float:left;
+		#cls2{
+			display:none;
+			font-size:30px;
+			cursor:pointer;
+			float:right;
 			margin-top:5px;
 		}
-		
-		#cls2{
-			display:block;
+		/* Set black background color, white text and some padding */
+		footer {
+		  background-color: #555;
+		  color: white;
+		  padding: 15px;
 		}
-		/*SIDEMENU ON MOBILE*/
-		.sidenav {
-		  height: 100%;
-		  width: 0;
-		  position: fixed;
-		  z-index: 1;
-		  top: 0;
-		  left: -50px;
-		  background-color: #EEEEEE;
-		  overflow-x: hidden;
-		  transition: 0.5s;
-		  padding-top: 60px;
+		#heading1{
+			font-size:32px;
+			font-weight:bold;
+			padding-top:3px;
 		}
+		.bold{
+			font-weight:bold;
+		}
+		hr{
+			clear:both;
+			border-width:4px;
+			border-radius:10px;
+		}
+		#pop{
+			border:1px solid green;
+			border-radius:50%;
+			padding:2px 4px;
+			background-color:red;
+			color:white;
+			margin-left:3px;
+		}
+		/* On small screens, set height to 'auto' for sidenav and grid */
+		@media screen and (max-width: 991px) {
+			sidenav {
+			height: auto;
+			}
+			.sidenav h4{
+			  display:inline-block;
+			  float:right;
+			}
+			#nav li{
+			  display:inline-block;
+			}
+			.row.content {height: auto;} 
+		}
+		@media screen and (max-width:700px){
+			.sidenav h4{
+			  display:;
+			  float:none;
+			}
+			.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+				padding:8px 3px;
+			}
+			#nav li{
+			  display:block;
+			}
+		}
+		@media screen and (max-width:567px){
+			.hide1{
+				display:none;
+			}
+			#se{
+				padding:1px;
+			}
+		}
+		@media screen and (max-width:439px){
+			.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+				padding:8px 3px;
+			}
+			.btn{
+				padding:1px 6px;
+			}
+			body{
+				font-size:13px;
+			}
+			#cls1{
+				visibility:visible;
+				
+			}
+			h1{
+				float:left;
+				margin-top:5px;
+			}
+			
+			#cls2{
+				display:block;
+			}
+			/*SIDEMENU ON MOBILE*/
+			.sidenav {
+			  height: 100%;
+			  width: 0;
+			  position: fixed;
+			  z-index: 1;
+			  top: 0;
+			  left: -50px;
+			  background-color: #EEEEEE;
+			  overflow-x: hidden;
+			  transition: 0.5s;
+			  padding-top: 60px;
+			}
 
-		.sidenav a {
-		  padding: 8px 8px 8px 32px;
-		  text-decoration: none;
-		  color: #818181;
-		  display: block;
-		  transition: 0.3s;
-		}
+			.sidenav a {
+			  padding: 8px 8px 8px 32px;
+			  text-decoration: none;
+			  color: #818181;
+			  display: block;
+			  transition: 0.3s;
+			}
 
-		.sidenav a:hover {
-		  color: #000;
-		}
+			.sidenav a:hover {
+			  color: #000;
+			}
 
-		.sidenav .closebtn {
-		  position: absolute;
-		  top: 0;
-		  right: 25px;
-		  font-size: 36px;
-		  margin-left: 50px;
-		}
+			.sidenav .closebtn {
+			  position: absolute;
+			  top: 0;
+			  right: 25px;
+			  font-size: 36px;
+			  margin-left: 50px;
+			}
 
-		#main {
-		  transition: margin-left .5s;
-		  padding: 16px;
+			#main {
+			  transition: margin-left .5s;
+			  padding: 16px;
+			}
 		}
-
+<?php 
+	if(isset($_SESSION['mode'])){
+		if($_SESSION['mode']=='dark'){
+?>
+	body{
+		background-color:#343a40;
+		color:white;
 	}
+	#mySidenav{
+		background-color:#1D9E74;
+	}
+	.nav-pills>li.active>a{
+		background-color:#343a40;
+	}
+	.nav>li>a:focus, .nav>li>a:hover {
+			color: #000;
+	}
+	hr{
+		border-color:aqua;
+		border-width:2px;
+	}
+	ul li a,.sidenav a {
+		color:white;
+	}
+	.bg-info{
+		background-color: black;
+	}
+	.text-danger{
+		color:#d9534f;
+	}
+	.text-success{
+		color:#5cb85c;
+	}
+	.table-hover>tbody>tr:hover {
+		background-color: #222;
+	}
+	.table>thead>tr>th,.table>tbody>tr>td {
+		border-color:aqua;
+	}
+	.text-info {
+		color: #337ab7;
+	}
+<?php		
+		}
+	}
+?>	
   </style>
 </head>
