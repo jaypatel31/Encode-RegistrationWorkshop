@@ -43,7 +43,7 @@ else{
 	<div class="mb-5">
 		<div id="msg" style="display:none;">
 			<div class='alert alert-success alert-dismissible'>Succesfully Updated Status
-			<button type="button" class="close" data-dismiss="alert">&times;</button></div>';	
+			<button type="button" class="close" data-dismiss="alert">&times;</button></div>	
 		</div>
 		<button type="button" class="btn btn-primary" onclick="AcceptAll('accept')">Accept All</button>
 		<button type="button" class="btn btn-primary" onclick="AcceptAll('reject')">Reject All</button>

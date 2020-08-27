@@ -7,15 +7,16 @@ if(isset($_POST['submit'])){
 	$Fname = htmlentities($_POST['fname']);
 	$Lname = htmlentities($_POST['lname']);
 	$Roll = htmlentities($_POST['enroll']);
-	$sql = "SELECT roll FROM user_master WHERE roll='$Roll'";
+	$Sem = $_POST['sem'];
+	$sql = "SELECT roll FROM user_master WHERE roll='$Roll' AND Sem_id='$Sem'";
 	$stmt = $pdo->query($sql);
 	if($stmt->rowCount()>0){
 		$_SESSION['error'] = "User Already Exist";
 		header('Location: '.REGISTRATION);
 		return;
 	}
-	$pass1 = $_POST['pass'];
-	$pass2 = $_POST['repass'];
+	$pass1 = htmlentities($_POST['pass']);
+	$pass2 = htmlentities($_POST['repass']);
 	
 	if(is_numeric($_POST['phone']) && (strlen($_POST['phone'])==10)){
 		$Phone = $_POST['phone'];

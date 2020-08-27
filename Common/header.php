@@ -93,6 +93,10 @@
 			border-width:4px;
 			border-radius:10px;
 		}
+		.table-hover>tbody>tr:hover {
+			 box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+			z-index: 1;
+		}
 		#pop{
 			border:1px solid green;
 			border-radius:50%;
@@ -231,6 +235,7 @@
 	}
 	.table-hover>tbody>tr:hover {
 		background-color: #222;
+		box-shadow: inset 1px 0 0 rgba(255,255,255,0.2), inset -1px 0 0 rgba(255,255,255,0.2), 0 0 4px 0 rgba(95,99,104,.6), 0 0 6px 2px rgba(95,99,104,.6);
 	}
 	.table>thead>tr>th,.table>tbody>tr>td {
 		border-color:aqua;
