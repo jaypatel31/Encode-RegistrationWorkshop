@@ -26,12 +26,13 @@ else{
 	echo "<table class='table table-hover'>";
 		echo "<thead>";
 			echo "<tr class='bg-info '>";
-				echo "<th>Name</th>";
+				echo "<th class='hide1'>Name</th>";
 				echo "<th>Roll</th>";
 				echo "<th class='hidden-xs'>email</th>";
 				echo "<th class='hide1'>phone</th>";
-				echo "<th>Branch</th>";
-				echo "<th>Semester</th>";
+				echo "<th>More Details</th>";
+				//echo "<th>Branch</th>";
+				//echo "<th class='hide1'>Semester</th>";
 				echo "<th>Action</th>";
 			echo "</tr>";
 		echo "</thead>";
@@ -74,12 +75,49 @@ else{
 						}
 						$u++;
 					echo "<tr>";
-						echo "<td>"."<span class='bold'>".++$k."</span>) ".$row[$i]['name']."</td>";
+						echo "<td class='hide1'>"."<span class='bold'>".++$k."</span>) ".$row[$i]['name']."</td>";
 						echo "<td class='search'>".$row[$i]['roll']."</td>";
 						echo "<td class='hidden-xs'>".$row[$i]['email']."</td>";
 						echo "<td class='hide1'>".$row[$i]['phone']."</td>";
-						echo "<td>".$row[$i]['branch_name']."</td>";
-						echo "<td class='text-center'>".$row[$i]['semester_name']."</td>";
+						echo "<td onclick='getDetails(\"".$row[$i]['name'].",".$row[$i]['lname'].",".$row[$i]['email'].",".$row[$i]['phone'].",".$row[$i]['branch_name'].",".$row[$i]['semester_name'].",".$row[$i]['Image']."\")'>
+						<button type='button' class='btn btn-info' data-toggle='modal' data-target='#exampleModal".$row[$i]['user_id']."'>
+							View More
+						</button>
+					</td>";
+			//MODEL--START
+			echo '<div class="modal fade" id="exampleModal'.$row[$i]['user_id'].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<h4 class="modal-title" id="exampleModalLabel">'.$row[$i]['name']." ".$row[$i]['lname'].'</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+				  </div>
+				  <div class="modal-body">
+					<div style="display:inline-block;width:45%">
+						<a href="'.$row[$i]['Image'].'" target="_blank">
+							<img class="wr" src='.$row[$i]['Image'].'>
+						</a>
+					</div>
+					<div style="display:inline-block;width:50%;vertical-align:top;">
+						<div class="v-top">Roll Number : '.$row[$i]['roll'].'</div>
+						<div class="v-top">Branch : '.$row[$i]['branch_name'].'</div>
+						<div class="v-top">Semester : '.$row[$i]['semester_name'].'</div>
+						<div class="v-top">Email : '.$row[$i]['email'].'</div>
+						<div class="v-top">Phone : '.$row[$i]['phone'].'</div>
+					</div>
+				  </div>
+				  <div style="clear:both" class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					
+				  </div>
+				</div>
+			  </div>
+			</div>';
+			//MODAL--END
+			//echo "<td >".$row[$i]['branch_name']."</td>";
+			//echo "<td class='hide1' class='text-center'>".$row[$i]['semester_name']."</td>";
 						if($row[$i]['Type']==1){
 							echo '<td class="text-success">Accepted</td>';
 						}

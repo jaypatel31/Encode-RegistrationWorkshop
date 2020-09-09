@@ -47,6 +47,13 @@
 		#se:focus{
 			outline:none;
 		}
+		.v-top{
+			font-size:16px;
+			padding-bottom:5px;
+			}
+			.wr{
+				width:225px;
+			}
 		#se{
 			border-radius:7px;
 			font-size:14px;
@@ -138,6 +145,9 @@
 			#se{
 				padding:1px;
 			}
+			.wr{
+				width:125px;
+			}
 		}
 		@media screen and (max-width:439px){
 			.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
@@ -207,6 +217,12 @@
 	body{
 		background-color:#343a40;
 		color:white;
+	}
+	.modal-content{
+		background-color:#23956F;
+	}
+	.modal-body{
+		background-color:#343a40;
 	}
 	#mySidenav{
 		background-color:#1D9E74;

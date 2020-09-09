@@ -33,7 +33,7 @@
 	}
 	function GetParticipantByCondition($where){
 		global $pdo;
-		$sql = "SELECT user_master.Type,user_master.user_id,user_master.name,user_master.roll,user_master.email,user_master.phone,branch.branch_name,semester.semester_name FROM user_master INNER JOIN semester JOIN branch ON user_master.Branch_id = branch.branch_id AND user_master.Sem_id = semester.semester_id WHERE ".$where;
+		$sql = "SELECT user_master.Type,user_master.user_id,user_master.name,user_master.lname,user_master.Image,user_master.roll,user_master.email,user_master.phone,branch.branch_name,semester.semester_name FROM user_master INNER JOIN semester JOIN branch ON user_master.Branch_id = branch.branch_id AND user_master.Sem_id = semester.semester_id WHERE ".$where;
 		$stmt = $pdo->query($sql);
 		return $stmt;
 	}

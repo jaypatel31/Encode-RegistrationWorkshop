@@ -34,3 +34,6 @@ function fd(){
             }
         }
     }
+	function getDetails(id){
+		console.log(id);
+	}
