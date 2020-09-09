@@ -21,6 +21,7 @@ Registration Workshop For Encode Club
   <img src="https://github.com/jaypatel31/Encode-RegistrationWorkshop/blob/master/screenshots/Screenshot%20(64).png" >
   <img src="https://github.com/jaypatel31/Encode-RegistrationWorkshop/blob/master/screenshots/Screenshot%20(65).png" >
   <img src="https://github.com/jaypatel31/Encode-RegistrationWorkshop/blob/master/screenshots/Screenshot%20(66).png" >
+  <img src="https://github.com/jaypatel31/Encode-RegistrationWorkshop/blob/master/screenshots/Screenshot%20(79).png" >
   <hr>
   
 ## Languages Used
