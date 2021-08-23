@@ -1,4 +1,4 @@
-# Encode-RegistrationWorkshop
+# Encode Workshop Registartion Portal
 Registration Workshop For Encode Club
 ## Functionality
  * First All the participant have to register themself by clicking on Register at home page.  
@@ -39,7 +39,7 @@ Registration Workshop For Encode Club
   * Search Box.
 
 ## Demo
-  **Link** : <a href="https://encoderegistration.000webhostapp.com/View/login.php">View Demo</a> <br/>
+  **Link** : <a href="https://registrationportalencode.000webhostapp.com/View/login.php">View Demo</a> <br/>
   **Info for Demo** : <br/>
          **username** :   admin    **pass** : admin **(for admin portal)**<br/>
          **username** : 	19BIT160  **pass** : capt **(for participant portal-accepted)**<br/>
